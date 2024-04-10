@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
+import Users from './pages/Users';
+import Todos from './pages/Todos';
+import EventsExample from './component/EventsExample';
+import UserId from './pages/UserId';
+import TodoId from './pages/TodoId';
 
-function App() {
+const App = () => {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Link to='/users'>Пользователи</Link>
+      <Link to='/todos'>Список дел</Link>
+      <Routes>
+        <Route path='/users' element={<Users/>}/>
+        <Route path='/users/:id' element={<UserId/>}/>
+        <Route path='/todos' element={<Todos/>}/>
+        <Route path='/todos/:id' element={<TodoId/>}/>
+        <Route path='/' element={<EventsExample/>}/>
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
